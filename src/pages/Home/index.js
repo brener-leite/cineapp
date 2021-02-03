@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Repository from '../../services/repository';
+import Default from '../../layouts/default';
 
 const Home = () => {
     const api = new Repository;
@@ -16,9 +17,11 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
-            Início
-        </div>
+        <Default>
+            <div>
+                Início
+            </div>
+        </Default>
     );
 }
 
