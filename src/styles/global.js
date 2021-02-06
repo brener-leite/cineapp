@@ -11,12 +11,14 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         position: relative;
-        font-family: $f-base;
         font-weight: 400;
         width: 100%;
         height: 100%;
         overflow-x: hidden;
         min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
     }
 
     h1,

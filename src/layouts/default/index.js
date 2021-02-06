@@ -11,9 +11,13 @@ const Default = ({ children }) => {
         isScrolling();
     }, []);
 
+    useEffect(() => {
+        console.log(useScroll)
+    }, [useScroll]);
+
     function isScrolling() {
         window.addEventListener('scroll', () => {
-            if(window.pageYOffset == 0) {
+            if(window.pageYOffset > 0) {
                 setScroll(true);
             }
             else {
@@ -25,7 +29,7 @@ const Default = ({ children }) => {
     return(
         <DefaultStyle>
             <GlobalStyle />
-            <Navbar/>
+            <Navbar isFluctuant={useScroll}/>
             {children}
         </DefaultStyle>
     );
