@@ -1,35 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-import Navbar from '../../components/navbar';
+import Menu from '../../components/menu';
+import Header from '../../components/header';
+
 import { DefaultStyle } from './style';
 import { GlobalStyle } from '../../styles/global';
 
 const Default = ({ children }) => {
-    const [useScroll, setScroll] = useState(false);
-
-    useEffect(() => {
-        isScrolling();
-    }, []);
-
-    useEffect(() => {
-        console.log(useScroll)
-    }, [useScroll]);
-
-    function isScrolling() {
-        window.addEventListener('scroll', () => {
-            if(window.pageYOffset > 0) {
-                setScroll(true);
-            }
-            else {
-                setScroll(false);
-            }
-        });
-    }
+    const [useMenuActive, setMenuActive] = useState(false);
 
     return(
         <DefaultStyle>
             <GlobalStyle />
-            <Navbar isFluctuant={useScroll}/>
+            <Header setMenuActive={setMenuActive} />
+            <Menu isActive={useMenuActive} setActive={setMenuActive} />
             {children}
         </DefaultStyle>
     );
