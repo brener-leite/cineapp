@@ -8,7 +8,6 @@ export const MenuStyle = styled.nav`
     left: ${props => props.isActive ? 0 : '-320px'};
     transition: 0.5s;
     width: 320px;
-    background-color: #222;
 `;
 
 export const Container = styled.div`
