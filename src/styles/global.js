@@ -3,6 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 import { color } from './variables';
 
 export const GlobalStyle = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
     html {
         width: 100%;
         height: auto;

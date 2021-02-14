@@ -10,6 +10,7 @@ export const HeaderStyle = styled.header`
     display: flex;
     align-items: center;
     padding: 0 40px;
+    justify-content: space-between;
 `;
 
 export const Logo = styled.a`
@@ -21,4 +22,8 @@ export const Logo = styled.a`
         /* text-transform: uppercase; */
         color: ${color.white}
     }
+`;
+
+export const Container = styled.div`
+    display: flex;
 `;
