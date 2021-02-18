@@ -10,13 +10,14 @@ import { setTheme } from '../../store/actions/theme';
 
 const Header = ({ 
     children,
-    setMenuActive
+    setActiveMenu,
+    isMenuActive
 }) => {
 
     return (
         <HeaderStyle>
             <Container>
-                <button onClick={() => setMenuActive(true)}>
+                <button onClick={() => setActiveMenu(!isMenuActive)}>
                     <FontAwesomeIcon icon={faBars} size='2x' style={{color: '#fff'}} />
                 </button>
                 <Logo href="/home">

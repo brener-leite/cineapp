@@ -7,13 +7,13 @@ import { DefaultStyle } from './style';
 import { GlobalStyle } from '../../styles/global';
 
 const Default = ({ children }) => {
-    const [useMenuActive, setMenuActive] = useState(false);
+    const [useActiveMenu, setActiveMenu] = useState(false);
 
     return(
         <DefaultStyle>
             <GlobalStyle />
-            <Header setMenuActive={setMenuActive} />
-            <Menu isActive={useMenuActive} setActive={setMenuActive} />
+            <Header setActiveMenu={setActiveMenu} isMenuActive={useActiveMenu} />
+            <Menu isActive={useActiveMenu} setActive={setActiveMenu} />
             {children}
         </DefaultStyle>
     );

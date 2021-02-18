@@ -21,7 +21,6 @@ const Menu = ({ isActive, setActive }) => {
 
     return (
         <MenuStyle isActive={isActive}>
-            <button onClick={() => setActive(false)}>X</button>
             <Container>
                 <div></div>
                 <div>
