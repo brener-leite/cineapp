@@ -1,29 +1,8 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-const reducers = combineReducers({
-    popularMovies: function(state, action) {
-        return [
-            {'name': 'brilho eterno'},
-            {'name': 'gladiador'}
-        ];
-    },
-    theme: function(state, action) {
-        switch(action.type) {
-            case 'THEME_CHANGE':
-                return action.payload;
-            default:
-                if(state) {
-                    return state;
-                }
-                else {
-                    return 'dark';
-                }
-        }
-    }
-});
+import reducers from './reducers/index';
 
-function storeConfig() {
-    return createStore(reducers);
-}
+const store = createStore(reducers, applyMiddleware(thunk));
 
-export default storeConfig;
+export default store;

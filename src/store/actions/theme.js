@@ -1,6 +1,8 @@
-export function changeTheme(newTheme) {
+const SET_THEME = 'SET_THEME';
+
+export const setTheme = theme => {
     return {
-        type: 'THEME_CHANGE',
-        payload: newTheme
+        type: SET_THEME,
+        payload: theme
     }
 }

@@ -1,24 +1,17 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { color } from '../../styles/variables';
 
 import { HeaderStyle, Logo, Container } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { changeTheme } from '../../store/actions/theme';
 import ThemeSwitcher from "react-theme-switcher";
+import { setTheme } from '../../store/actions/theme';
 
-import { connect } from 'react-redux';
-import { color } from '../../styles/variables';
-
-function Header({ children,
-    setMenuActive,
-    popular,
-    changeTheme,
-    theme
-}) {
-
-    useEffect(() => {
-        console.log('att ', theme)
-    }, [theme]);
+const Header = ({ 
+    children,
+    setMenuActive
+}) => {
 
     return (
         <HeaderStyle>
@@ -36,25 +29,26 @@ function Header({ children,
             <Container>
                 <ThemeSwitcher
                     switcherColor={color.white}
+                    darkColor='#000'
                 />
             </Container>
         </HeaderStyle>
     );
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         theme: state.theme,
-        popular: state.popularMovies
+        popular: state.popular,
+        genres: state.genres
     };
 }
 
-function mapDispatchtoProps(dispatch) {
+const mapDispatchtoProps = dispatch => {
     return {
-        changeTheme(newTheme) {
-            // action creator -> action
-            const action = changeTheme(newTheme);
-            dispatch(action);
+        setTheme: (newTheme) => {
+            console.log('entrou aqui')
+            dispatch(setTheme(newTheme))
         }
     };
 }
