@@ -1,18 +1,29 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { color } from '../../styles/variables';
-
-import { HeaderStyle, Logo, Container } from './style';
+import ThemeSwitcher from "react-theme-switcher";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import ThemeSwitcher from "react-theme-switcher";
-import { setTheme } from '../../store/actions/theme';
+
+import { color } from '../../styles/variables';
+import { HeaderStyle, Logo, Container } from './style';
+import { fetchGenres } from '../../store/actions/genres';
 
 const Header = ({ 
     children,
     setActiveMenu,
-    isMenuActive
+    isMenuActive,
+    genres,
+    fetchGenres,
 }) => {
+
+    
+    useEffect(() => {
+        fetchGenres();
+    }, [])
+
+    useEffect(() => {
+        console.log(genres)
+    }, [genres])
 
     return (
         <HeaderStyle>
@@ -39,7 +50,6 @@ const Header = ({
 
 const mapStateToProps = state => {
     return {
-        theme: state.theme,
         popular: state.popular,
         genres: state.genres
     };
@@ -47,9 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchtoProps = dispatch => {
     return {
-        setTheme: (newTheme) => {
-            console.log('entrou aqui')
-            dispatch(setTheme(newTheme))
+        fetchGenres: () => {
+            dispatch(fetchGenres())
         }
     };
 }

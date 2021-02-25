@@ -37,7 +37,7 @@ const Home = () => {
                 <Slider {...settings}>
                     {usePopularMovies.map((movie, index) => {
                         return(
-                            <Banner movie={movie} />
+                            <Banner key={index} movie={movie} />
                         );
                     })}
                 </Slider>

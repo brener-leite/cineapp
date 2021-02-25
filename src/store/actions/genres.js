@@ -1,23 +1,36 @@
-const FETCH_GENRES_REQUEST = 'FETCH_GENRES_REQUEST';
-const FETCH_GENRES_SUCCESS = 'FETCH_GENRES_SUCCESS';
-const FETCH_GENRES_FAILURE = 'FETCH_GENRES_FAILURE';
+import ACTIONS from '../constants';
+import Repository from '../../services/repository';
 
-export const fetchGenresRequest = () => {
+export const fetchGenres = () => {
+    const api = new Repository();
+
+    return dispatch => {
+        dispatch(fetchGenresRequest());
+
+        api.getGenres()
+            .then(({ data: { genres } }) => dispatch(fetchGenresSuccess(genres)))
+            .catch(error => dispatch(fetchGenresFailure(error)))
+
+    }
+
+}
+
+const fetchGenresRequest = () => {
     return {
-        type: FETCH_GENRES_REQUEST
+        type: ACTIONS.FETCH_GENRES_REQUEST
     }
 }
 
-export const fetchGenresSuccess = genres => {
+const fetchGenresSuccess = genres => {
     return {
-        type: FETCH_GENRES_SUCCESS,
+        type: ACTIONS.FETCH_GENRES_SUCCESS,
         payload: genres
     }
 }
 
-export const fetchGenresFailure = error => {
+const fetchGenresFailure = error => {
     return {
-        type: FETCH_GENRES_FAILURE,
+        type: ACTIONS.FETCH_GENRES_FAILURE,
         payload: error
     }
 }

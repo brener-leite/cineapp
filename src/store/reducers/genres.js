@@ -1,29 +1,27 @@
-const initialState = {
+import ACTIONS from '../constants';
+
+const INITIAL_STATE = {
     loading: false,
     data: [],
     error: ''
 }
 
-const FETCH_GENRES_REQUEST = 'FETCH_GENRES_REQUEST';
-const FETCH_GENRES_SUCCESS = 'FETCH_GENRES_SUCCESS';
-const FETCH_GENRES_FAILURE = 'FETCH_GENRES_FAILURE';
-
-const reducer = (state = initialState, action) => {
+const reducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case FETCH_GENRES_REQUEST:
+        case ACTIONS.FETCH_GENRES_REQUEST:
             return {
                 ...state,
                 loading: true
             }
 
-        case FETCH_GENRES_SUCCESS:
+        case ACTIONS.FETCH_GENRES_SUCCESS:
             return {
                 loading: false,
                 data: action.payload,
                 error: ''
             }
 
-        case FETCH_GENRES_FAILURE:
+        case ACTIONS.FETCH_GENRES_FAILURE:
             return {
                 loading: false,
                 data: [],

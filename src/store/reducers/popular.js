@@ -1,29 +1,27 @@
-const initialState = {
+import ACTIONS from '../constants';
+
+const INITIAL_STATE = {
     loading: false,
     data: [],
     error: ''
 }
 
-const FETCH_POPULAR_REQUEST = 'FETCH_POPULAR_REQUEST';
-const FETCH_POPULAR_SUCCESS = 'FETCH_POPULAR_SUCCESS';
-const FETCH_POPULAR_FAILURE = 'FETCH_POPULAR_FAILURE';
-
-const reducer = (state = initialState, action) => {
+const reducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case FETCH_POPULAR_REQUEST:
+        case ACTIONS.FETCH_POPULAR_REQUEST:
             return {
                 ...state,
                 loading: true
             }
 
-        case FETCH_POPULAR_SUCCESS:
+        case ACTIONS.FETCH_POPULAR_SUCCESS:
             return {
                 loading: false,
                 data: action.payload,
                 error: ''
             }
 
-        case FETCH_POPULAR_FAILURE:
+        case ACTIONS.FETCH_POPULAR_FAILURE:
             return {
                 loading: false,
                 data: [],
