@@ -1,4 +1,17 @@
 import ACTIONS from '../constants';
+import Repository from '../../services/repository';
+
+export const fetchPopular = () => {
+    const api = new Repository();
+
+    return dispatch => {
+        dispatch(fetchPopularRequest());
+
+        api.getPopular()
+            .then(({ data: { results } }) => dispatch(fetchPopularSuccess(results)))
+            .catch(error => dispatch(fetchPopularFailure(error)))
+    }
+}
 
 const fetchPopularRequest = () => {
     return {

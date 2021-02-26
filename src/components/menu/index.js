@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlayCircle, faFilm, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import Repository from '../../services/repository';
-import { MenuStyle, Container, List } from './style';
+import { MenuStyle, Container, List, Icon, ListTitle, Close } from './style';
 
 const Menu = ({ isActive, setActive }) => {
     const api = new Repository();
@@ -22,12 +25,21 @@ const Menu = ({ isActive, setActive }) => {
     return (
         <MenuStyle isActive={isActive}>
             <Container>
-                <div></div>
+                <Close onClick={() => setActive(!isActive)}>
+                    <FontAwesomeIcon icon={faTimes} size="2x" style={{color: '#fff'}} />
+                </Close>
+                <Icon>
+                    <FontAwesomeIcon icon={faPlayCircle} size="4x" style={{color: '#fff'}} />
+                </Icon>
                 <div>
+                    <div>
+                        <ListTitle>Genres</ListTitle>
+                    </div>
                     <List>
                         {useGenres.map((genre, index) => {
                             return (
                                 <li key={index}>
+                                    <FontAwesomeIcon icon={faFilm} size="1x" style={{color: '#fff'}} />
                                     <a>{genre.name}</a>
                                 </li>
                             )
@@ -39,4 +51,19 @@ const Menu = ({ isActive, setActive }) => {
     );
 }
 
-export default Menu;
+const mapStateToProps = state => {
+    return {
+        genres: state.genres
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+
+    }
+}
+
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(Menu);

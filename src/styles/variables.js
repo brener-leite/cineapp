@@ -1,6 +1,7 @@
-export const color = {
-    background: '#000',
-    surface: '#121212',
-    purple: '#5c5470',
-    white: '#fff'
+export const COLOR = {
+    PRIMARY: '#607d8b',
+    DARK: '#455a64',
+    DARKER: '#263238',
+    LIGHT: '#90a4ae',
+    LIGHTER: '#eceff1'
 }
