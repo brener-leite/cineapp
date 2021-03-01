@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        color: #fff
+        color: ${COLOR.DARKER}
     }
 
     h1,

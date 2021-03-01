@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { COLOR } from '../../styles/variables';
 
 export const HeaderStyle = styled.header`
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 70px;
     background-color: ${COLOR.PRIMARY};
     width: 100%;
@@ -11,6 +13,12 @@ export const HeaderStyle = styled.header`
     align-items: center;
     padding: 0 40px;
     justify-content: space-between;
+    opacity: 0.4;
+    z-index: 1;
+    transition: .3s;
+    &:hover {
+        opacity: 1;
+    }
 `;
 
 export const Logo = styled.a`

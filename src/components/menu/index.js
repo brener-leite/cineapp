@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faFilm, faTimes, faStar, faFireAlt, faForward } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchGenres } from '../../store/actions/genres';
+import { fetchImages } from '../../store/actions/images';
 import { MenuStyle, Container, List, Icon, ListTitle, Close } from './style';
 
 const Menu = ({ 
@@ -16,10 +17,6 @@ const Menu = ({
     useEffect(() => {
         fetchGenres();
     }, []);
-
-    useEffect(() => {
-        console.log(genres)
-    }, [genres])
 
     return (
         <MenuStyle isActive={isActive}>
@@ -71,14 +68,15 @@ const Menu = ({
 
 const mapStateToProps = state => {
     return {
-        genres: state.genres
+        genres: state.genres,
+        images: state.images
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchGenres: () => {
-            dispatch(fetchGenres())
+            dispatch(fetchGenres());
         }
     }
 }
